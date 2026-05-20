@@ -31,7 +31,21 @@ namespace ChatMessages
                 return;
             }
 
+            var server = ServerTextBox.Text?.Trim();
+            var portText = PortTextBox.Text?.Trim();
             var userName = UserNameTextBox.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(server))
+            {
+                MessageBox.Show("Please enter a server address.", "Chat", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            if (!int.TryParse(portText, out var port) || port <= 0 || port > 65535)
+            {
+                MessageBox.Show("Please enter a valid port.", "Chat", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(userName))
             {
                 MessageBox.Show("Please enter a username.", "Chat", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -41,7 +55,7 @@ namespace ChatMessages
             try
             {
                 _client = new TcpClient();
-                await _client.ConnectAsync("127.0.0.1", 5000);
+                await _client.ConnectAsync(server, port);
 
                 var stream = _client.GetStream();
                 _reader = new StreamReader(stream);
@@ -141,6 +155,8 @@ namespace ChatMessages
             SendButton.IsEnabled = isConnected;
             MessageTextBox.IsEnabled = isConnected;
             UserNameTextBox.IsEnabled = !isConnected;
+            ServerTextBox.IsEnabled = !isConnected;
+            PortTextBox.IsEnabled = !isConnected;
             StatusTextBlock.Text = isConnected ? "Connected" : "Disconnected";
             StatusTextBlock.Foreground = isConnected ? System.Windows.Media.Brushes.DarkGreen : System.Windows.Media.Brushes.DarkRed;
         }

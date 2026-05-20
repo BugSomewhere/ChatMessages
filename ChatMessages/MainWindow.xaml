@@ -21,8 +21,12 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="Chat Room" FontSize="16" FontWeight="SemiBold" Foreground="White" Margin="0,0,16,0" />
+                    <TextBlock Text="Server" Foreground="#FF9CA3AF" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <TextBox x:Name="ServerTextBox" Width="120" Height="28" Background="#FF111827" Foreground="White" BorderBrush="#FF374151" Margin="0,0,10,0" Padding="6,2" Text="127.0.0.1" />
+                    <TextBlock Text="Port" Foreground="#FF9CA3AF" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <TextBox x:Name="PortTextBox" Width="70" Height="28" Background="#FF111827" Foreground="White" BorderBrush="#FF374151" Margin="0,0,10,0" Padding="6,2" Text="5000" />
                     <TextBlock Text="Username" Foreground="#FF9CA3AF" VerticalAlignment="Center" Margin="0,0,6,0" />
-                    <TextBox x:Name="UserNameTextBox" Width="180" Height="28" Background="#FF111827" Foreground="White" BorderBrush="#FF374151" Margin="0,0,10,0" Padding="6,2" />
+                    <TextBox x:Name="UserNameTextBox" Width="160" Height="28" Background="#FF111827" Foreground="White" BorderBrush="#FF374151" Margin="0,0,10,0" Padding="6,2" />
                     <Button x:Name="ConnectButton" Width="100" Height="28" Content="Connect" Background="#FF2563EB" Foreground="White" BorderBrush="#FF2563EB" Click="ConnectButton_Click" />
                 </StackPanel>
                 <Border Grid.Column="1" Background="#FF111827" CornerRadius="12" Padding="10,4" VerticalAlignment="Center">
