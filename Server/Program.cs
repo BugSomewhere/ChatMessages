@@ -14,13 +14,13 @@ internal sealed class ChatServer
 
     public ChatServer(int port)
     {
-        _listener = new TcpListener(IPAddress.Loopback, port);
+        _listener = new TcpListener(IPAddress.Any, port);
     }
 
     public async Task StartAsync()
     {
         _listener.Start();
-        Console.WriteLine("Chat server running on 127.0.0.1:5000");
+        Console.WriteLine("Chat server running on 0.0.0.0:5000");
 
         while (true)
         {
