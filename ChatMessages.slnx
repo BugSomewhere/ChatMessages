@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ChatMessages/ChatMessages.csproj" Id="967d5902-2e9a-45b2-b88f-9ac358beca03" />
+  <Project Path="Server/Server.csproj" />
+</Solution>
